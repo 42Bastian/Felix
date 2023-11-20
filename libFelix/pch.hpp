@@ -23,6 +23,7 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
+#include <sstream>
 
 #define BOOST_MP_STANDALONE
 #include <boost/multiprecision/cpp_int.hpp>
