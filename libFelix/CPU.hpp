@@ -199,6 +199,13 @@ private:
     int cursor;
     std::vector<char> data;
 
+     History(int col, int row, int cur, std::vector<char> d)
+ {
+   columns = col;
+   rows = row;
+   cursor = cur;
+   data = d;
+ }
     std::span<char> nextRow();
     void copy( std::span<char> out );
   };
@@ -213,4 +220,3 @@ private:
   uint16_t mStackBreakCondition;
   bool mBreakOnBrk;
 };
-
