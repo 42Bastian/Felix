@@ -6,3 +6,4 @@ WinFelix/version.hpp
 VersionTool/VersionTool.vcxproj.user
 *.vcxproj.user
 *.hxx
+._*
