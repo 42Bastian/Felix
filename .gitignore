@@ -7,3 +7,4 @@ VersionTool/VersionTool.vcxproj.user
 *.vcxproj.user
 *.hxx
 ._*
+.DS*

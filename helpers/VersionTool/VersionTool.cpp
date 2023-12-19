@@ -110,13 +110,14 @@ int main( int argc, char** argv )
     std::vector<wchar_t> wstr( wchars_num, 0 );
     MultiByteToWideChar( CP_UTF8, 0, cmd.c_str(), -1, wstr.data(), wchars_num );
     line = ExecCmd( wstr.data() ).GetString();
+    printf("=>%s\n",line.c_str());
   }
   catch ( std::exception const& )
   {
     return -1;
   }
 
-  std::regex rx{ R"reg(^v(\d+)\.(\d+)\.(\d+)(?:-(\d+)-g(.*))?)reg" };
+  std::regex rx{ R"reg(^v(\d+)\.(\d+)\.(\d+)_BS42(?:_ARM64)(?:-(\d+)-g(.*))?)reg" };
   std::smatch sm;
   if ( std::regex_search( line, sm, rx ) )
   {
@@ -125,11 +126,11 @@ int main( int argc, char** argv )
     ss << "static constexpr auto version_major = " << sm.str( 1 ) << ";" << std::endl;
     ss << "static constexpr auto version_minor = " << sm.str( 2 ) << ";" << std::endl;
     ss << "static constexpr auto version_patch = " << sm.str( 3 ) << ";" << std::endl;
-    if ( sm.str( 4 ) == "0" )
+   /* if (sm.str(4) == "0")
     {
       ss << "static constexpr auto version_string = L\"" << sm.str( 1 ) << "." << sm.str( 2 ) << "." << sm.str( 3 ) << "\"" << ";" << std::endl;
     }
-    else
+    else*/
     {
       ss << "static constexpr auto version_string = L\"" << sm.str( 1 ) << "." << sm.str( 2 ) << "." << sm.str( 3 ) << " (" << sm.str( 4 ) << "-" << sm.str( 5 ) << ") (BS42 fork)\"" << ";" << std::endl;
     }
