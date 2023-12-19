@@ -7,6 +7,12 @@ struct SuzySprite
 };
 
 
+/*
+    BACKGROUND_SPRITE = %00000000
+    BACK_SHADOW_SPRITE= %00000000
+
+    Background-Shadow
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::BACKGROUND>
 {
@@ -30,6 +36,11 @@ struct SuzySprite<Suzy::Sprite::BACKGROUND>
   }
 };
 
+/*
+    BACKNONCOLL_SPRITE= %00000001
+
+    Background-No Collision
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::BACKNONCOLL>
 {
@@ -48,6 +59,12 @@ struct SuzySprite<Suzy::Sprite::BACKNONCOLL>
   }
 };
 
+/*
+    ;BOUNDARY_SPRITE  = %00000010
+    BSHADOW_SPRITE    = %00000010
+
+    Boundary Shadow
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::BSHADOW>
 {
@@ -62,10 +79,16 @@ struct SuzySprite<Suzy::Sprite::BSHADOW>
 
   static constexpr bool colliding( int pixel )
   {
-    return pixel != 0xe && pixel != 0;
+    return pixel != 0xe && pixel != 0x0;
   }
 };
 
+/*
+    ;BSHADOW_SPRITE   = %00000011
+    BOUNDARY_SPRITE   = %00000011
+
+    Boundary
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::BOUNDARY>
 {
@@ -80,10 +103,17 @@ struct SuzySprite<Suzy::Sprite::BOUNDARY>
 
   static constexpr bool colliding( int pixel )
   {
-    return pixel != 0;
+    return pixel != 0x0;
   }
 };
 
+
+/*
+    ;SHADOW_SPRITE    = %00000100
+    NORMAL_SPRITE     = %00000100
+
+    Normal
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::NORMAL>
 {
@@ -98,10 +128,15 @@ struct SuzySprite<Suzy::Sprite::NORMAL>
 
   static constexpr bool colliding( int pixel )
   {
-    return pixel != 0;
+    return pixel != 0x0;
   }
 };
 
+/*
+    NONCOLL_SPRITE    = %00000101
+
+    Non-Collideable
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::NONCOLL>
 {
@@ -120,6 +155,12 @@ struct SuzySprite<Suzy::Sprite::NONCOLL>
   }
 };
 
+/*
+    XOR_SPRITE        = %00000110
+    XOR_SHADOW_SPRITE = %00000110
+
+    Exclusive-or-shadow
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::XOR>
 {
@@ -134,10 +175,16 @@ struct SuzySprite<Suzy::Sprite::XOR>
 
   static constexpr bool colliding( int pixel )
   {
-    return pixel != 0xe && pixel != 0;
+    return pixel != 0xe && pixel != 0x0;
   }
 };
 
+/*
+    ;NORMAL_SPRITE    = %00000111
+    SHADOW_SPRITE     = %00000111
+
+    Shadow
+*/
 template<>
 struct SuzySprite<Suzy::Sprite::SHADOW>
 {
@@ -152,6 +199,6 @@ struct SuzySprite<Suzy::Sprite::SHADOW>
 
   static constexpr bool colliding( int pixel )
   {
-    return pixel != 0xe && pixel != 0;
+    return pixel != 0xe && pixel != 0x0;
   }
 };
