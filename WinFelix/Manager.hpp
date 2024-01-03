@@ -8,6 +8,7 @@
 #include "MemEditor.hpp"
 #include "WatchEditor.hpp"
 #include "DisasmEditor.h"
+#include "Monitor.hpp"
 #include "BreakpointEditor.hpp"
 
 class WinAudioOut;
@@ -37,7 +38,6 @@ public:
   void reset();
   void updateRotation();
   void initialize( std::shared_ptr<ISystemDriver> systemDriver );
-  int win32_WndProcHandler( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
   IUserInput & userInput() const;
   void quit();
 
@@ -59,16 +59,19 @@ private:
   friend struct MikeyProxy;
   friend struct SuzyProxy;
   friend struct CPUProxy;
+  friend struct SymbolProxy;
   friend class UI;
   friend class CPUEditor;
   friend class MemEditor;
   friend class WatchEditor;
   friend class DisasmEditor;
   friend class BreakpointEditor;
+  friend class Monitor;
 
   bool mDoReset;
 
   Debugger mDebugger;
+  Monitor mMonitor;
 
   struct DebugWindows
   {
