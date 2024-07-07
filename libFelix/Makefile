@@ -1,6 +1,8 @@
 TOP:=..
 
-#CPPSRC=ActionQueue.cpp
+all: libFelix.a
+
+CPPSRC=ActionQueue.cpp
 CPPSRC+=AudioChannel.cpp
 CPPSRC+=BootROMTraps.cpp
 CPPSRC+=CPU.cpp
