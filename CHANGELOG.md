@@ -1,3 +1,7 @@
+## 0.6.1 BS42
+ 
+ - Hack to disassemble RAM under ROM
+ - 
 ## 0.5.2 BS42
 
  - Fix disassembly of BRK

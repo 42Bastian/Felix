@@ -852,7 +852,11 @@ uint8_t const* Core::debugRAM()
 }
 uint8_t const* Core::debugROM()
 {
-  return &mROM[0];
+  if (mMapCtl.romDisable) {
+    return &mRAM[0xfe00];
+  } else {
+    return &mROM[0];
+  }
 }
 
 uint16_t Core::debugDispAdr() const
